@@ -1,0 +1,166 @@
+{%extends 'base.html'%}
+{%load static%}
+
+
+{%block content%}
+<body>
+    <head>
+       
+        <title >Syncfy</title>
+        <style>
+        header.masthead .bg-circle-1 {
+      height: 90rem;
+      width: 90rem;
+      bottom: -55rem;
+      left: -55rem;
+    }
+    header.masthead .masthead-content {
+      z-index: 1;
+      position: relative;
+    }
+    
+    
+    header.masthead .bg-circle {
+      z-index: 0;
+      position: absolute;
+      border-radius: 100%;
+      background: linear-gradient(0deg,#ee0979,#ff6a00);
+    }
+    
+    .text-white {
+      color: #fff!important;
+    }
+    
+    .text-center {
+      text-align: center!important;
+    }
+    
+    body {
+      font-family: Lato;
+    }
+    
+    body {
+      margin: 0;
+      font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,Liberation Sans,sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+      text-align: left;
+      background-color: #fff;
+    }
+    
+    
+    
+    
+    html {
+      font-family: sans-serif;
+      line-height: 1.15;
+      -webkit-text-size-adjust: 100%;
+      
+    }
+    
+    header.masthead .masthead-content {
+      z-index: 1;
+      position: relative;
+    }
+    
+    header.masthead {
+      position: relative;
+      overflow: hidden;
+      padding-top: calc(7rem + 72px);
+      padding-bottom: 7rem;
+      background: linear-gradient(0deg,#ff6a00,#ee0979);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-attachment: scroll;
+      background-size: cover;
+    }
+    
+    article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+      display: block;
+    }
+    
+    header.masthead .bg-circle-1 {
+      height: 90rem;
+      width: 90rem;
+      bottom: -55rem;
+      left: -55rem;
+    }
+    
+    header.masthead .bg-circle-2 {
+      height: 50rem;
+      width: 50rem;
+      top: -25rem;
+      right: -25rem;
+    }
+    
+    header.masthead .bg-circle-3 {
+      height: 20rem;
+      width: 20rem;
+      bottom: -10rem;
+      right: 5%;
+    }
+    
+    header.masthead .bg-circle-4 {
+      height: 30rem;
+      width: 30rem;
+      top: -5rem;
+      right: 35%;
+    }
+    
+    
+    </style>
+    </head>
+    <header class="text-center text-white masthead">
+        <div class="masthead-content">
+            <div class="container">
+                <h1 class="masthead-heading mb-0">STAY IN TOUCH</h1>
+                <h2 class="masthead-subheading mb-0">START LISTENING NOW</h2><a class="btn btn-primary btn-xl rounded-pill mt-5" role="button" href="#">Learn More</a>
+            </div>
+        </div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle">
+
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5"><img class="rounded-circle img-fluid" src="{% static 'img/enjoyer.jpg' %}"></div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4">Always good to be music enjoyer...</h2>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5"><img class="rounded-circle img-fluid" src="{% static 'img/fan.jpg' %}"></div>
+                </div>
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5">
+                        <h2 class="display-4">Don't be Average fan...</h2>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section></section>
+    <footer class="py-5 bg-black">
+        <div class="container">
+            <p class="text-center text-white m-0 small">Copyright&nbsp;© Syncfy 2021</p>
+        </div>
+    </footer>
+        {%endblock content%}
+

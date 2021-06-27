@@ -1,0 +1,275 @@
+{%extends 'base.html'%}
+{%load static%}
+
+<!-- D8AF4F -->
+{%block content%}
+<style>
+body {
+      min-height: 100%;
+    }
+    
+    body {
+      
+      background: radial-gradient(ellipse at center, #D84FA6 0%, #d9534f 100%);
+    }
+    
+    .player {
+      box-shadow: 0 2px 4px -4px rgba(0, 0, 0, 0.4), 0 50px 45px -20px rgba(0, 0, 0, 0.2);
+      border-radius: 30px;
+      height: 400px;
+      margin: 50px auto;
+      overflow: hidden;
+      position: relative;
+      width: 400px;
+    }
+    .player__meta {
+      box-sizing: border-box;
+      font-size: 24px;
+      padding: 50px 20px;
+      position: absolute;
+      text-align: center;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
+    .player__artist {
+      font-weight: 300;
+    }
+    .player__bg {
+      background-position: bottom center;
+      background-size: cover;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+    }
+    .player__bg:before, .player__bg:after {
+      content: "";
+      display: block;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+    }
+    .player__bg:after {
+      background: linear-gradient(to top, #000, #fff);
+      opacity: 0.2;
+      mix-blend-mode: soft-light;
+    }
+    .player__controls {
+      background-color: rgba(255, 255, 255, 0.2);
+      bottom: 0;
+      box-shadow: inset 0 1px rgba(255, 255, 255, 0.3);
+      height: 80px;
+      position: absolute;
+      width: 100%;
+    }
+    .player__controls:before, .player__controls:after {
+      content: "";
+      height: 100%;
+      display: block;
+      pointer-events: none;
+      position: absolute;
+      width: 100%;
+    }
+    .player__controls:before {
+      box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.6);
+      mix-blend-mode: soft-light;
+    }
+    .player__controls-bg {
+      background-position: bottom center;
+      background-size: cover;
+      height: 100%;
+      filter: blur(30px);
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+    }
+    .player__controls-bg:before {
+      background: linear-gradient(to top, #000, #fff);
+      content: "";
+      display: block;
+      height: 100%;
+      opacity: 0.08;
+      mix-blend-mode: soft-light;
+      position: absolute;
+      width: 100%;
+    }
+    .player__play, .player__prev, .player__next {
+      background: rgba(255, 255, 255, 0.01);
+      border-radius: 60px;
+      bottom: 0;
+      box-shadow: 0 -2px 4px 0 rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: background 0.15s linear;
+    }
+    .player__play .player__icon, .player__prev .player__icon, .player__next .player__icon {
+      transition: transform 0.05s linear;
+    }
+    .player__play:before, .player__play:after, .player__prev:before, .player__prev:after, .player__next:before, .player__next:after {
+      border-radius: 60px;
+      content: "";
+      display: block;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+    }
+    .player__play:before, .player__prev:before, .player__next:before {
+      background: linear-gradient(to top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+      box-shadow: 0 -1px 1px 0 rgba(255, 255, 255, 0.6);
+      mix-blend-mode: overlay;
+    }
+    .player__play:after, .player__prev:after, .player__next:after {
+      box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6);
+      mix-blend-mode: soft-light;
+    }
+    .player__play:hover, .player__prev:hover, .player__next:hover {
+      background: radial-gradient(ellipse at center, rgba(12, 11, 23, 0.4) 0%, rgba(86, 76, 132, 0.1) 60%, rgba(255, 255, 255, 0.2) 100%);
+    }
+    .player__play:hover .player__icon, .player__prev:hover .player__icon, .player__next:hover .player__icon {
+      transform: scale(0.9);
+    }
+    .player__play {
+      height: 60px;
+      width: 60px;
+    }
+    .player__prev, .player__next {
+      height: 40px;
+      width: 40px;
+    }
+    .player__prev {
+      right: 120px;
+    }
+    .player__next {
+      left: 120px;
+    }
+    .player__icon {
+      bottom: 0;
+      color: rgba(0, 0, 0, 0.8);
+      cursor: pointer;
+      height: 1em;
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 1.4em;
+    }
+    .player__icon:before {
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
+    }
+    .player__icon-play {
+      font-size: 30px;
+      width: 1.2em;
+    }
+    .player__icon-prev, .player__icon-next {
+      width: 1.4em;
+    }
+    .player__repeat {
+      left: 0.5em;
+      width: 1.4em;
+    }
+    .player__shuffle {
+      right: 0.5em;
+      width: 2em;
+    }
+    .player__repeat, .player__shuffle {
+      bottom: 0;
+      color: #1A0C1D;
+      height: 1.2em;
+      font-size: 30px;
+      margin: auto;
+      position: absolute;
+      top: 0;
+    }
+    .player__list {
+      height: 1.2em;
+      font-size: 20px;
+      left: 20px;
+      position: absolute;
+      top: 30px;
+      width: 1.4em;
+      z-index: 1;
+    }
+    .player__volume {
+      height: 1.2em;
+      font-size: 26px;
+      right: 20px;
+      position: absolute;
+      top: 30px;
+      width: 1.4em;
+      z-index: 1;
+    }
+    </style>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+<br><br>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="player">
+    <div class="player__list">
+      <div class="player__icon player__icon-list icon-list"></div>
+    </div>
+    <div class="player__volume">
+      <div class="player__icon player__icon-volume icon-volume"></div>
+    </div>
+    <div class="player__meta">
+      <div class="player__song">{{song_name}}</div>
+      <div class="player__artist">{{artist}}</div>
+    </div>
+    <div class="player__bg" style="background-image: url('{{song_img}}');"></div>
+    <div class="player__controls">
+      <div class="player__controls-bg" style="background-image: url('{{song_img}}');"></div>
+      <div class="player__repeat">
+        <div class="player__icon player__icon-repeat icon-repeat"></div>
+      </div>
+      <div class="player__prev">
+        <div class="player__icon player__icon-prev icon-prev"></div>
+      </div>
+      <div class="player__play" onclick='send("stop")'>
+        <div class="player__icon player__icon-play icon-play btn-group-lg"><i class="fa fa-play" style="font-size:36px;  margin-left: 5px;"></i></div>
+      </div>
+      <div class="player__next">
+        <div class="player__icon player__icon-next icon-next"></div>
+      </div>
+      <div class="player__shuffle">
+        <div class="player__icon player__icon-shuffle icon-shuffle"></div>
+      </div>
+    </div>
+  </div>
+<script>
+  var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+	// var ws_path = ws_scheme + '://' + window.location.host + ":8001/"; // PRODUCTION
+	var ws_path = ws_scheme + '://' + window.location.host + "/lobby/"+"{{lobby_pk}}/";
+	// console.log("Connecting to " + ws_path);
+    console.log(ws_path)
+	var notificationSocket = new WebSocket(ws_path);
+
+    notificationSocket.onopen = function(e){
+        
+		console.log("Notification Socket on open: " + e)
+    };
+    function send(command){
+      notificationSocket.send(JSON.stringify({
+                'command': command,
+                'user':'{{request.user.email}}',
+                'lobbypk':'{{lobby_pk}}'
+            }));
+            console.log(command,'{{request.user}}','{{lobby_pk}}')
+    }
+   
+
+
+          
+       
+
+</script>
+  {%endblock content%}
